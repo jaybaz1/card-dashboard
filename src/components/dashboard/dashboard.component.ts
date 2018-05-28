@@ -13,7 +13,10 @@ import { IAccount, ITransactions } from "../../interfaces";
 })
 export class DashboardComponent {
   public account: IAccount;
-  public transactions: ITransactions[];
+  public filteredTransactions: ITransactions[];
+  public categories: string[];
+
+  private transactions: ITransactions[];
 
   constructor(
     private router: Router,
@@ -25,10 +28,37 @@ export class DashboardComponent {
       if (e instanceof NavigationEnd) {
         const data = this.route.snapshot.data.card;
         this.account = data[0];
-        this.transactions = data[1];
-        console.log(data);
+        this.transactions = this.orderByDate(data[1]);
+        this.filteredTransactions = this.orderByDate(data[1]);
+        console.log(this.filteredTransactions);
       }
     });
+  }
+
+  private getCategories() {}
+
+  private orderByDate(transactions: ITransactions[]) {
+    return transactions.sort(function(a, b) {
+      const d1: any = new Date(b.date);
+      const d2: any = new Date(a.date);
+      return d1 - d2;
+    });
+  }
+
+  public getIncomes() {
+    this.filteredTransactions = this.transactions.filter(
+      transaction => transaction.category === "Income"
+    );
+  }
+
+  public getExpenditures() {
+    this.filteredTransactions = this.transactions.filter(
+      transaction => transaction.category !== "Income"
+    );
+  }
+
+  public getAllTransactions() {
+    this.filteredTransactions = this.transactions;
   }
 
   public onSignOut() {

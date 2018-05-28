@@ -15,15 +15,21 @@
         </div>
 
         <ul>
-            <li>All transactions</li>
-            <li>Incomes</li>
-            <li>Expenditure</li>
+            <li (click)="getAllTransactions()">All transactions</li>
+            <li (click)="getIncomes()">Incomes</li>
+            <li (click)="getExpenditures()">Expenditure</li>
             <li>Your spending</li>
         </ul>
 
         <ul>
-            <li *ngFor="let transaction of transactions">
-                {{transaction.name}}
+            <li *ngFor="let transaction of filteredTransactions">
+                <small>{{transaction.date | date: 'fullDate'}}</small>
+                <p>
+                    <b>{{transaction.name}}</b>
+                </p>
+                <p>{{transaction.amount | currency: 'GBP'}}</p>
+                <p>{{transaction.category}}</p>
+
             </li>
         </ul>
     </div>

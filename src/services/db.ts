@@ -27,7 +27,7 @@ export class InMemoryDataService implements InMemoryDbService {
       {
         name: "Jack Wills",
         category: "Clothes",
-        id: faker.random.uuid(undefined, 100),
+        id: faker.random.uuid(undefined, 100, undefined, "-"),
         amount: faker.finance.amount(),
         date: faker.date.between(dates.from, dates.to)
       },
@@ -35,134 +35,148 @@ export class InMemoryDataService implements InMemoryDbService {
         name: "Pret",
         category: "Eating out",
         id: faker.random.uuid(),
-        amount: faker.finance.amount(undefined, 10),
+        amount: faker.finance.amount(undefined, 10, undefined, "-"),
         date: faker.date.between(dates.from, dates.to)
       },
       {
         name: "Skydive UK",
         category: "Entertainment",
         id: faker.random.uuid(),
-        amount: faker.finance.amount(undefined, 1000),
+        amount: faker.finance.amount(undefined, 1000, undefined, "-"),
         date: faker.date.between(dates.from, dates.to)
       },
       {
         name: "Game",
         category: "Entertainment",
         id: faker.random.uuid(),
-        amount: faker.finance.amount(undefined, 50),
+        amount: faker.finance.amount(undefined, 50, undefined, "-"),
         date: faker.date.between(dates.from, dates.to)
       },
       {
         name: "Tesco",
         category: "Groceries",
         id: faker.random.uuid(),
-        amount: faker.finance.amount(undefined, 100),
+        amount: faker.finance.amount(undefined, 100, undefined, "-"),
         date: faker.date.between(dates.from, dates.to)
       },
       {
         name: "Netflix",
         category: "Entertainment",
         id: faker.random.uuid(),
-        amount: faker.finance.amount(undefined, 10),
+        amount: faker.finance.amount(undefined, 10, undefined, "-"),
         date: faker.date.between(dates.from, dates.to)
       },
       {
         name: "Spotify",
         category: "Entertainment",
         id: faker.random.uuid(),
-        amount: faker.finance.amount(undefined, 10),
+        amount: faker.finance.amount(undefined, 10, undefined, "-"),
         date: faker.date.between(dates.from, dates.to)
       },
       {
         name: "K10",
         category: "Eating out",
         id: faker.random.uuid(),
-        amount: faker.finance.amount(undefined, 10),
+        amount: faker.finance.amount(undefined, 10, undefined, "-"),
         date: faker.date.between(dates.from, dates.to)
       },
       {
         name: "Jack Wills",
         category: "Clothes",
         id: faker.random.uuid(),
-        amount: faker.finance.amount(undefined, 100),
+        amount: faker.finance.amount(undefined, 100, undefined, "-"),
         date: faker.date.between(dates.from, dates.to)
       },
       {
         name: "Jack Wills",
         category: "Clothes",
         id: faker.random.uuid(),
-        amount: faker.finance.amount(undefined, 100),
+        amount: faker.finance.amount(undefined, 100, undefined, "-"),
         date: faker.date.between(dates.from, dates.to)
       },
       {
         name: "Pret",
         category: "Eating out",
         id: faker.random.uuid(),
-        amount: faker.finance.amount(undefined, 10),
+        amount: faker.finance.amount(undefined, 10, undefined, "-"),
         date: faker.date.between(dates.from, dates.to)
       },
       {
         name: "Skydive UK",
         category: "Entertainment",
         id: faker.random.uuid(),
-        amount: faker.finance.amount(undefined, 1000),
+        amount: faker.finance.amount(undefined, 1000, undefined, "-"),
         date: faker.date.between(dates.from, dates.to)
       },
       {
         name: "Game",
         category: "Entertainment",
         id: faker.random.uuid(),
-        amount: faker.finance.amount(undefined, 50),
+        amount: faker.finance.amount(undefined, 50, undefined, "-"),
         date: faker.date.between(dates.from, dates.to)
       },
       {
         name: "Tesco",
         category: "Groceries",
         id: faker.random.uuid(),
-        amount: faker.finance.amount(undefined, 100),
+        amount: faker.finance.amount(undefined, 100, undefined, "-"),
         date: faker.date.between(dates.from, dates.to)
       },
       {
         name: "Netflix",
         category: "Entertainment",
         id: faker.random.uuid(),
-        amount: faker.finance.amount(undefined, 10),
+        amount: faker.finance.amount(undefined, 10, undefined, "-"),
         date: faker.date.between(dates.from, dates.to)
       },
       {
         name: "Spotify",
         category: "Entertainment",
         id: faker.random.uuid(),
-        amount: faker.finance.amount(undefined, 10),
+        amount: faker.finance.amount(undefined, 10, undefined, "-"),
         date: faker.date.between(dates.from, dates.to)
       },
       {
         name: "K10",
         category: "Eating out",
         id: faker.random.uuid(),
-        amount: faker.finance.amount(undefined, 10),
+        amount: faker.finance.amount(undefined, 10, undefined, "-"),
         date: faker.date.between(dates.from, dates.to)
       },
       {
         name: "Jack Wills",
         category: "Clothes",
-        id: faker.random.uuid(undefined, 100),
-        amount: faker.finance.amount(),
-        date: faker.date.between()
+        id: faker.random.uuid(),
+        amount: faker.finance.amount(undefined, 100, undefined, "-"),
+        date: faker.date.between(dates.from, dates.to)
       },
       {
         name: "Ticketmaster",
         category: "Entertainment",
-        id: faker.random.uuid(undefined, 100),
-        amount: faker.finance.amount(),
-        date: faker.date.between()
+        id: faker.random.uuid(),
+        amount: faker.finance.amount(undefined, 100, undefined, "-"),
+        date: faker.date.between(dates.from, dates.to)
       },
       {
         name: "Cineworld",
         category: "Entertainment",
-        id: faker.random.uuid(undefined, 30),
-        amount: faker.finance.amount(),
-        date: faker.date.between()
+        id: faker.random.uuid(),
+        amount: faker.finance.amount(undefined, 30, undefined, "-"),
+        date: faker.date.between(dates.from, dates.to)
+      },
+      {
+        name: "Topup",
+        category: "Income",
+        id: faker.random.uuid(),
+        amount: faker.finance.amount(100, 500),
+        date: faker.date.between(dates.from, dates.to)
+      },
+      {
+        name: "Topup",
+        category: "Income",
+        id: faker.random.uuid(),
+        amount: faker.finance.amount(100, 500),
+        date: faker.date.between(dates.from, dates.to)
       }
     ];
 
