@@ -16,12 +16,18 @@ import { GapiService } from "../services/gapi.service";
 import { BankingService } from "../services/banking.service";
 import { InMemoryDataService } from "../services/db";
 
+//Resolvers
+import { CardResolver } from "../services/card.resolver";
+
 const appRoutes: Routes = [
   { path: "login", component: LoginComponent },
   {
     path: "dashboard",
     component: DashboardComponent,
-    canActivate: [AuthGuard]
+    //canActivate: [AuthGuard]
+    resolve: {
+      card: CardResolver
+    }
   },
   { path: "", redirectTo: "/login", pathMatch: "full" }
 ];
@@ -34,7 +40,7 @@ const appRoutes: Routes = [
     HttpClientModule,
     HttpClientInMemoryWebApiModule.forRoot(InMemoryDataService)
   ],
-  providers: [GapiService, BankingService, AuthGuard],
+  providers: [GapiService, BankingService, AuthGuard, CardResolver],
   bootstrap: [AppComponent]
 })
 export class AppModule {}

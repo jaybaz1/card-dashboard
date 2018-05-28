@@ -7,11 +7,11 @@
         </div>
         <div class="card__details">
             <p>
-                <b>Card Name:</b> [Insert name]</p>
+                <b>Card Name:</b> {{account.name}}</p>
             <p>
                 <b>Card number:</b> ************0984</p>
             <p>
-                <b>Balance: </b> £678.99</p>
+                <b>Balance: </b> {{account.balance | currency: 'GBP'}}</p>
         </div>
 
         <ul>
@@ -22,7 +22,9 @@
         </ul>
 
         <ul>
-
+            <li *ngFor="let transaction of transactions">
+                {{transaction.name}}
+            </li>
         </ul>
     </div>
 </section>

@@ -1,37 +1,34 @@
-import { Component, OnInit } from "@angular/core";
-import { Router, NavigationEnd } from "@angular/router";
+import { Component } from "@angular/core";
+import { Router, NavigationEnd, ActivatedRoute } from "@angular/router";
 
 import { GapiService } from "../../services/gapi.service";
 import { BankingService } from "../../services/banking.service";
+
+import { IAccount, ITransactions } from "../../interfaces";
 
 @Component({
   selector: "app-dashboard",
   templateUrl: "./dashboard.component.html",
   styleUrls: ["./dashboard.component.scss"]
 })
-export class DashboardComponent implements OnInit {
+export class DashboardComponent {
+  public account: IAccount;
+  public transactions: ITransactions[];
+
   constructor(
     private router: Router,
+    private route: ActivatedRoute,
     private _bankService: BankingService,
     private _gapi: GapiService
   ) {
     this.router.events.subscribe(e => {
       if (e instanceof NavigationEnd) {
-        this._bankService.balance().subscribe(
-          data => {
-            console.log(data);
-          },
-          err => {
-            console.log(err);
-          }
-        );
+        const data = this.route.snapshot.data.card;
+        this.account = data[0];
+        this.transactions = data[1];
+        console.log(data);
       }
     });
-  }
-
-  ngOnInit() {}
-  ngAfterViewInit() {
-    console.log("fired");
   }
 
   public onSignOut() {
