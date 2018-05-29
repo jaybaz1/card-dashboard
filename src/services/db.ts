@@ -4,7 +4,7 @@ import * as faker from "faker/locale/en_US";
 export class InMemoryDataService implements InMemoryDbService {
   createDb() {
     /* Fake card data */
-    const balance = { id: 0, name: "Test Card", balance: 500 };
+    const balance = { id: 0, name: "Test Card", balance: 2500 };
 
     const transactionData = () => {
       return {

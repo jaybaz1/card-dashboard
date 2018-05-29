@@ -31,7 +31,10 @@
                 </p>
                 <p class="dashboard__account">
                     <i class="fas fa-balance-scale"></i> :
-                    <span>{{account.balance | currency: 'GBP'}}</span>
+                    <span>
+                        <b>{{newBalance | currency: 'GBP'}}</b>
+                    </span> (
+                    <small>Last statement: {{account.balance | currency: 'GBP'}}</small> )
                 </p>
             </div>
         </div>
