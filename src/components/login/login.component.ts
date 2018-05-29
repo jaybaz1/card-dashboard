@@ -35,12 +35,14 @@ export class LoginComponent {
   }
 
   public attachSignin(element) {
+    // Run google auth code outside of angular
     this._zone.runOutsideAngular(() => {
       // Attaches sign in functionality to button
       this._gapi.auth2.attachClickHandler(
         element,
         {},
         user => {
+          // Run callback function inside angular
           this._zone.run(() => {
             const gData = user.getBasicProfile();
             this._gapi.user = gData.getName();

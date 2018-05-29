@@ -20,6 +20,7 @@ export class InMemoryDataService implements InMemoryDbService {
     };
 
     /* 
+     * Fake Transactions data
      * Had to manually create the transactions object due to a bug in angular-in-memory-web-api v0.6.0
      * https://github.com/angular/in-memory-web-api/issues/189
      */

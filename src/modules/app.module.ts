@@ -24,7 +24,7 @@ const appRoutes: Routes = [
   {
     path: "dashboard",
     component: DashboardComponent,
-    //canActivate: [AuthGuard]
+    canActivate: [AuthGuard],
     resolve: {
       card: CardResolver
     }
