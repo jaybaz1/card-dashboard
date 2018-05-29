@@ -19,7 +19,7 @@ export class AuthGuard implements CanActivate {
   ): boolean {
     // If user is not logged in redirect to login page
     if (!this._gapi.loggedIn) {
-      this.router.navigate(["login"]);
+      location.assign("/login");
     }
 
     // Otherwise return true

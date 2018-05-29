@@ -7,6 +7,9 @@
         </div>
         <div class="card__details">
             <p>
+                <b>Welcome {{user}}!</b>
+            </p>
+            <p>
                 <b>Card Name:</b> {{account.name}}</p>
             <p>
                 <b>Card number:</b> ************0984</p>
@@ -18,10 +21,10 @@
             <li (click)="getAllTransactions()">All transactions</li>
             <li (click)="getIncomes()">Incomes</li>
             <li (click)="getExpenditures()">Expenditure</li>
-            <li>Your spending</li>
+            <li (click)="getCategorisedTransactions()">Your spending</li>
         </ul>
 
-        <ul>
+        <ul *ngIf="!showCategories">
             <li *ngFor="let transaction of filteredTransactions">
                 <small>{{transaction.date | date: 'fullDate'}}</small>
                 <p>
@@ -29,6 +32,26 @@
                 </p>
                 <p>{{transaction.amount | currency: 'GBP'}}</p>
                 <p>{{transaction.category}}</p>
+
+            </li>
+        </ul>
+
+        <ul *ngIf="showCategories">
+            <li *ngFor="let category of categorisedTransactions">
+                <p>
+                    <b>{{category.name}}</b>
+                </p>
+
+                <p>
+                    <b>Amount:</b> {{category.amount | currency: 'GBP'}}</p>
+                <ul>
+                    <li *ngFor="let transaction of category.transactions">
+                        <small>{{transaction.date | date: 'fullDate'}}</small>
+                        <p>
+                            <b>{{transaction.name}}</b>
+                        </p>
+                    </li>
+                </ul>
 
             </li>
         </ul>
