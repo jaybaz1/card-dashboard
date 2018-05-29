@@ -1,55 +1,118 @@
-<a href="#" (click)="onSignOut();">Sign out</a>
+<section class="hero is-info is-medium dashboard">
+    <div class="hero-head">
+        <nav class="navbar">
+            <div class="container">
+                <div id="navbarMenuHeroB" class="navbar-menu">
+                    <div class="navbar-end">
+                        <span class="navbar-item">
+                            <a class="button is-info is-inverted" (click)="onSignOut();">
+                                <span>Signout</span>
+                            </a>
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </nav>
+    </div>
 
-<section class="card">
+    <div class="hero-body">
+        <div class="container has-text-centered">
+            <div class="has-text-left">
+                <p class="title dashboard__title">
+                    Welcome {{user}}!
+                </p>
+                <p class="dashboard__account">
+                    <i class="fab fa-cc-visa"></i> :
+                    <span>{{account.name}}</span>
+                </p>
+                <p class="dashboard__account">
+                    <i class="fas fa-hashtag"></i> :
+                    <span>************0984</span>
+                </p>
+                <p class="dashboard__account">
+                    <i class="fas fa-balance-scale"></i> :
+                    <span>{{account.balance | currency: 'GBP'}}</span>
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <div class="hero-foot">
+        <nav class="tabs is-boxed is-fullwidth">
+            <div class="container">
+                <ul>
+                    <li [ngClass]="{'is-active': activeTab === 'all'}" (click)="getAllTransactions()">
+                        <a>All transactions</a>
+                    </li>
+                    <li [ngClass]="{'is-active': activeTab === 'income'}" (click)="getIncomes()">
+                        <a>Incomes</a>
+                    </li>
+                    <li [ngClass]="{'is-active': activeTab === 'expenditures'}" (click)="getExpenditures()">
+                        <a>Expenditure</a>
+                    </li>
+                    <li [ngClass]="{'is-active': activeTab === 'cat'}" (click)="getCategorisedTransactions()">
+                        <a>Your spending</a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+    </div>
+</section>
+
+<section class="container">
     <div>
-        <div class="card__img">
-
-        </div>
-        <div class="card__details">
-            <p>
-                <b>Welcome {{user}}!</b>
-            </p>
-            <p>
-                <b>Card Name:</b> {{account.name}}</p>
-            <p>
-                <b>Card number:</b> ************0984</p>
-            <p>
-                <b>Balance: </b> {{account.balance | currency: 'GBP'}}</p>
-        </div>
-
-        <ul>
-            <li (click)="getAllTransactions()">All transactions</li>
-            <li (click)="getIncomes()">Incomes</li>
-            <li (click)="getExpenditures()">Expenditure</li>
-            <li (click)="getCategorisedTransactions()">Your spending</li>
-        </ul>
-
         <ul *ngIf="!showCategories">
             <li *ngFor="let transaction of filteredTransactions">
-                <small>{{transaction.date | date: 'fullDate'}}</small>
-                <p>
-                    <b>{{transaction.name}}</b>
-                </p>
-                <p>{{transaction.amount | currency: 'GBP'}}</p>
-                <p>{{transaction.category}}</p>
+                <div class="box dashboard__transaction">
+                    <div class="media">
 
+                        <div class="media-content">
+                            <div class="content">
+                                <p>
+                                    <small>{{transaction.date | date: 'fullDate'}}</small>
+                                    <br>
+                                    <strong>{{transaction.name}}</strong>
+                                    <br>
+                                    <strong>{{transaction.amount | currency: 'GBP'}}</strong>
+                                </p>
+                            </div>
+
+                        </div>
+                        <div class="media-right">
+                            <p>{{transaction.category}}</p>
+                        </div>
+                    </div>
+                </div>
             </li>
         </ul>
 
         <ul *ngIf="showCategories">
             <li *ngFor="let category of categorisedTransactions">
-                <p>
-                    <b>{{category.name}}</b>
-                </p>
+                <div class="dashboard__categories">
+                    <p>
+                        <strong>{{category.name}} / {{category.amount | currency: 'GBP'}} </strong>
+                        <small>(Total)</small>
+                    </p>
 
-                <p>
-                    <b>Amount:</b> {{category.amount | currency: 'GBP'}}</p>
+                </div>
+
                 <ul>
                     <li *ngFor="let transaction of category.transactions">
-                        <small>{{transaction.date | date: 'fullDate'}}</small>
-                        <p>
-                            <b>{{transaction.name}}</b>
-                        </p>
+                        <div class="box dashboard__transaction">
+                            <div class="media">
+
+                                <div class="media-content">
+                                    <div class="content">
+                                        <p>
+                                            <small>{{transaction.date | date: 'fullDate'}}</small>
+                                            <br>
+                                            <strong>{{transaction.name}}</strong>
+                                        </p>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
                     </li>
                 </ul>
 

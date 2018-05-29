@@ -1,0 +1,14 @@
+.login {
+}
+
+.login__title {
+  padding-bottom: 1rem;
+}
+
+.login__button {
+  cursor: pointer;
+
+  &:hover {
+    opacity: 0.8;
+  }
+}

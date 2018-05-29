@@ -19,6 +19,7 @@ export class DashboardComponent {
   public categorisedTransactions: any;
   public showCategories = false;
   public user: any;
+  public activeTab: string = "all";
 
   private transactions: ITransactions[];
 
@@ -36,7 +37,6 @@ export class DashboardComponent {
         this.transactions = this.orderByDate(data[1]);
         this.filteredTransactions = this.orderByDate(data[1]);
         this.categorisedTransactions = this.initCategories(data[1]);
-        console.log(this.user, this.categorisedTransactions);
       }
     });
   }
@@ -84,6 +84,7 @@ export class DashboardComponent {
 
   public getIncomes() {
     this.resetTransactions();
+    this.activiteTab("income");
     this.filteredTransactions = this.transactions.filter(
       transaction => transaction.category === "Income"
     );
@@ -91,6 +92,7 @@ export class DashboardComponent {
 
   public getExpenditures() {
     this.resetTransactions();
+    this.activiteTab("expenditures");
     this.filteredTransactions = this.transactions.filter(
       transaction => transaction.category !== "Income"
     );
@@ -98,15 +100,21 @@ export class DashboardComponent {
 
   public getAllTransactions() {
     this.resetTransactions();
+    this.activiteTab("all");
     this.filteredTransactions = this.transactions;
   }
 
   public getCategorisedTransactions() {
+    this.activiteTab("cat");
     this.showCategories = !this.showCategories;
   }
 
   private resetTransactions() {
     this.showCategories = false;
+  }
+
+  private activiteTab(tab) {
+    this.activeTab = tab;
   }
 
   public onSignOut() {

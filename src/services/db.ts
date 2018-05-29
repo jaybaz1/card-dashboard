@@ -27,8 +27,8 @@ export class InMemoryDataService implements InMemoryDbService {
       {
         name: "Jack Wills",
         category: "Clothes",
-        id: faker.random.uuid(undefined, 100, undefined, "-"),
-        amount: faker.finance.amount(),
+        id: faker.random.uuid(),
+        amount: faker.finance.amount(undefined, 100, undefined, "-"),
         date: faker.date.between(dates.from, dates.to)
       },
       {
